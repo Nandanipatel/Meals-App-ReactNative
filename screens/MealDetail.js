@@ -70,6 +70,7 @@ export default MealDetail;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 20,
   },
   image: {
     width: "100%",
@@ -111,11 +112,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     marginVertical: 4,
     backgroundColor: "#ccc",
+    textAlign: "center",
   },
+
   subOuterContainer: {
     alignItems: "center",
   },
   subContainer: {
     width: "80%",
+    marginBottom: 20,
   },
 });
