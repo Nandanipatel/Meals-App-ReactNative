@@ -17,20 +17,18 @@ function CategoryGridTitle({ title, color, onPress, imageUrl }) {
         style={styles.image}
         imageStyle={{ opacity: 0.4 }}
       >
-        <View>
-          <Pressable
-            android_ripple={{ color: "#ccc" }}
-            style={({ pressed }) => [
-              styles.button,
-              pressed ? styles.buttonPressed : null,
-            ]}
-            onPress={onPress}
-          >
-            <View style={[styles.innerContainer]}>
-              <Text style={styles.title}>{title}</Text>
-            </View>
-          </Pressable>
-        </View>
+        <Pressable
+          android_ripple={{ color: "#ccc" }}
+          style={({ pressed }) => [
+            styles.button,
+            pressed ? styles.buttonPressed : null,
+          ]}
+          onPress={onPress}
+        >
+          <View style={[styles.innerContainer]}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        </Pressable>
       </ImageBackground>
     </View>
   );
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "rgba(54,51,51,1)",
-    borderRadius:6,
+    borderRadius: 6,
   },
   gridItem: {
     flex: 1,
@@ -57,7 +55,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.25,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
-
   },
   button: {
     flex: 1,
@@ -79,5 +76,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     color: "white",
+    marginBottom:5,
   },
 });
