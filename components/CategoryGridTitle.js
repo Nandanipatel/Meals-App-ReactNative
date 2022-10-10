@@ -1,20 +1,37 @@
-import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
+import {
+  Pressable,
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  ImageBackground,
+} from "react-native";
 
-function CategoryGridTitle({ title, color, onPress }) {
+function CategoryGridTitle({ title, color, onPress, imageUrl }) {
+  console.log(imageUrl);
   return (
     <View style={[styles.gridItem]}>
-      <Pressable
-        android_ripple={{ color: "#ccc" }}
-        style={({ pressed }) => [
-          styles.button,
-          pressed ? styles.buttonPressed : null,
-        ]}
-        onPress={onPress}
+      <ImageBackground
+        source={{ uri: imageUrl }}
+        resizeMode="cover"
+        style={styles.image}
+        imageStyle={{ opacity: 0.4 }}
       >
-        <View style={[styles.innerContainer, { backgroundColor: color }]}>
-          <Text style={styles.title}>{title}</Text>
+        <View>
+          <Pressable
+            android_ripple={{ color: "#ccc" }}
+            style={({ pressed }) => [
+              styles.button,
+              pressed ? styles.buttonPressed : null,
+            ]}
+            onPress={onPress}
+          >
+            <View style={[styles.innerContainer]}>
+              <Text style={styles.title}>{title}</Text>
+            </View>
+          </Pressable>
         </View>
-      </Pressable>
+      </ImageBackground>
     </View>
   );
 }
@@ -22,10 +39,16 @@ function CategoryGridTitle({ title, color, onPress }) {
 export default CategoryGridTitle;
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(54,51,51,1)",
+    borderRadius:6,
+  },
   gridItem: {
     flex: 1,
     margin: 16,
-    height: 150,
+    height: 117,
     borderRadius: 8,
     elevation: 4,
     backgroundColor: "white",
@@ -34,6 +57,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.25,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
+
   },
   button: {
     flex: 1,
@@ -46,11 +70,14 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "center",
     alignItems: "center",
-
     borderRadius: 8,
   },
   title: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
+    textAlign: "left",
+    position: "absolute",
+    bottom: 0,
+    color: "white",
   },
 });
